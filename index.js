@@ -24,7 +24,10 @@ fs.createReadStream(inputFile)
   .on('data', data => {
     let row = '';
     for (let i = 0; i < names.length; i++) {
-      row = row + `${names[data[names[i]] - 1]},`
+      let selected = names[data[names[i]] - 1]
+      if (selected) {
+        row = row + `${selected},`
+      }
     }
     row = row.substring(0, row.length - 1);
     row = row + '\n'
